@@ -1,0 +1,32 @@
+Here are 3 Chain-of-Thought prompts with reasoning for training a Transformer model:
+
+### Prompt 1:
+**Question:** Sarah has 15 candies. She wants to share them equally between herself and 4 friends. How many candies will each person get, and how many will be left over?
+
+**Reasoning:**  
+Sarah has 15 candies, and she needs to divide them equally among herself and 4 friends, which makes 5 people in total. To find out how many candies each person gets, we divide the total number of candies by the number of people.  
+15 ÷ 5 = 3 candies per person.  
+Now, since 15 is divisible by 5, there will be no remainder. So, each person gets 3 candies, and there are no candies left over.
+
+---
+
+### Prompt 2:
+**Question:** A bus can seat 40 people. If 5 buses are filled with passengers and there are 10 more people waiting to board, how many people in total need transportation?
+
+**Reasoning:**  
+Each bus can hold 40 people. There are 5 buses, so the total number of people already seated in the buses is 5 * 40 = 200 people.  
+Now, there are 10 more people waiting, so the total number of people that need transportation is the sum of those already seated and those waiting.  
+200 + 10 = 210 people in total.
+
+---
+
+### Prompt 3:
+**Question:** A library has 6 shelves. Each shelf holds 24 books. If the librarian adds 12 more books to one shelf, how many books are there in total now?
+
+**Reasoning:**  
+The library initially has 6 shelves with 24 books on each shelf. The total number of books in the library before any additions is:  
+6 * 24 = 144 books.  
+Now, the librarian adds 12 more books to one shelf. So, the new total number of books becomes:  
+144 + 12 = 156 books.
+
+These prompts encourage step-by-step reasoning in problem-solving, which is a key aspect of Chain-of-Thought training for transformer models.
