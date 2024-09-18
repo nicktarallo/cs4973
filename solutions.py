@@ -10,6 +10,7 @@ from typing import List, Optional
 # TASK 1
 def prompt_zero_shot(problem: str) -> str:
     # Your code here
+    
     pass
 
 def extract_zero_shot(completion: str) -> Optional[int]:
