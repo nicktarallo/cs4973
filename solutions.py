@@ -1,7 +1,7 @@
 from openai import OpenAI
 
 URL = "http://199.94.61.113:8000/v1/"
-KEY=api_key="tarallo.n@northeastern.edu:OQEgetkQ6LBofgWW4jsC"
+KEY = "tarallo.n@northeastern.edu:OQEgetkQ6LBofgWW4jsC"
 
 client = OpenAI(base_url=URL, api_key=KEY)
 
