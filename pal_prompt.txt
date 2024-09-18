@@ -1,50 +1,46 @@
-### Prompt 1 (Sharing Candies):
-
-**Question:**  
-Sarah has 15 candies. She wants to share them equally between herself and 4 friends. How many candies will each person get, and how many will be left over?
+### Prompt 1:
+**Question:** Sarah has 15 candies. She wants to share them equally between herself and 4 friends. How many candies will each person get, and how many will be left over?
 
 ```python
-total_candies = 15
-num_people = 1 + 4  # Sarah and 4 friends
-candies_per_person = total_candies // num_people
-leftover_candies = total_candies % num_people
+def question():
+    total_candies = 15
+    num_people = 1 + 4  # Sarah and 4 friends
+    candies_per_person = total_candies // num_people  # Integer division to find how many each person gets
+    remaining_candies = total_candies % num_people  # Modulus to find leftover candies
+    return candies_per_person, remaining_candies
 
-candies_per_person, leftover_candies  # Answer: (candies per person, leftover candies)
+candies_per_person, remaining_candies = question()
+candies_per_person, remaining_candies  # This will return 3 and 0
 ```
 
----
-
-### Prompt 2 (Bus Seating):
-
-**Question:**  
-A bus can seat 40 people. If 5 buses are filled with passengers and there are 10 more people waiting to board, how many people in total need transportation?
+### Prompt 2:
+**Question:** A bus can seat 40 people. If 5 buses are filled with passengers and there are 10 more people waiting to board, how many people in total need transportation?
 
 ```python
-seats_per_bus = 40
-num_buses = 5
-people_seated = seats_per_bus * num_buses
-people_waiting = 10
-total_people = people_seated + people_waiting
+def question():
+    bus_capacity = 40
+    num_buses = 5
+    passengers_on_buses = num_buses * bus_capacity  # Total number of people seated in the buses
+    waiting_people = 10
+    total_people = passengers_on_buses + waiting_people  # Add the number of people waiting
+    return total_people
 
-total_people  # Answer: total number of people needing transportation
+total_people = question()
+total_people  # This will return 210
 ```
 
-
----
-
-### Prompt 3 (Books in the Library):
-
-**Question:**  
-A library has 6 shelves. Each shelf holds 24 books. If the librarian adds 12 more books to one shelf, how many books are there in total now?
+### Prompt 3:
+**Question:** A library has 6 shelves. Each shelf holds 24 books. If the librarian adds 12 more books to one shelf, how many books are there in total now?
 
 ```python
-num_shelves = 6
-books_per_shelf = 24
-initial_total_books = num_shelves * books_per_shelf
-additional_books = 12
-final_total_books = initial_total_books + additional_books
+def question():
+    shelves = 6
+    books_per_shelf = 24
+    total_books = shelves * books_per_shelf  # Initial total books in the library
+    added_books = 12
+    total_books_now = total_books + added_books  # Add the new books to the total
+    return total_books_now
 
-final_total_books  # Answer: total number of books after the addition
+total_books_now = question()
+total_books_now  # This will return 156
 ```
-
-
