@@ -225,7 +225,7 @@ def extract_pal(completion: str) -> Optional[int]:
     try:
         # print(CODE)
         exec(CODE)
-        result = eval("question()")
+        result = question()
         return int(result)
     except:
         print(CODE)
