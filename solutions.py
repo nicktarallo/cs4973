@@ -106,7 +106,7 @@ def prompt_cot(problem: str) -> str:
  
     Reasoning: Sarah has 15 candies, and she needs to divide them equally among herself and 4 friends, which makes 5 people in total. To find out how many candies each person gets, we divide the total number of candies by the number of people. 15 ÷ 5 = 3 candies per person. So, each person gets 3 candies.
 
-    Answer: 3
+    Answer without units: 3
 
     Done
     
@@ -115,7 +115,7 @@ def prompt_cot(problem: str) -> str:
 
     Reasoning: Each bus can hold 40 people. There are 5 buses, so the total number of people already seated in the buses is 5 * 40 = 200 people. Now, there are 10 more people waiting, so the total number of people that need transportation is the sum of those already seated and those waiting. Therefore, there are 200 + 10 = 210 people in total.
 
-    Answer: 210
+    Answer without units: 210
 
     Done
 
@@ -124,7 +124,7 @@ def prompt_cot(problem: str) -> str:
   
     Reasoning: The library initially has 6 shelves with 24 books on each shelf. The total number of books in the library before any additions is 6 * 24 = 144 books. Now, the librarian adds 12 more books to one shelf. So, the new total number of books becomes 144 + 12 = 156 books.
 
-    Answer: 156
+    Answer without units: 156
 
     Done
 
@@ -136,7 +136,7 @@ def prompt_cot(problem: str) -> str:
 
 
 def extract_cot(completion: str) -> Optional[int]:
-    items = completion.split("Answer: ")
+    items = completion.split("Answer without units: ")
     if len(items) < 2:
         return None
     try:
