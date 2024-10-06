@@ -1,4 +1,4 @@
-- prompt: I need to get from LA to jfk on jan 2
+- prompt: I need to get from LA to jfk on jan 2, 2023
   expected_type: find-flights
   expected_result: [79, 80]
 - prompt: book the first one

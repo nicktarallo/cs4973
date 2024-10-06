@@ -120,7 +120,9 @@ Otherwise, just respond with text
 
 Return the result in a variable called result.
 
-Today's date is September 1, 2023.
+Today's date is September 1, 2023. However, if the user asks you to, you can book flights in the past.
+
+If your response uses code to find or book flights, do NOT include any other text outside of the code.
 """
 
 USER_1 = "find me a flight from New York to Denver on December 30"
@@ -189,7 +191,7 @@ class Agent:
             messages = self.conversation,
             model = "meta-llama/Meta-Llama-3.1-8B-Instruct",
             temperature=0.2,
-        )
+        ).choices[0].message.content
         self.conversation.append({
             'role': 'assistant',
             'content': resp,
@@ -197,7 +199,7 @@ class Agent:
         try:
             if resp[0:9] == '```python':
                 self.program_state['result'] = None
-                exec(resp[9:-3], self.program_state)
+                exec(resp[9:-3].strip(), self.program_state)
                 # if self.program_state['result'] is not None:
                 self.text_prefix = str(self.program_state['result'])
                 if 'find_flight' in resp:
@@ -276,7 +278,7 @@ client = OpenAI(base_url=BASE_URL, api_key=API_KEY)
 
 # a = Agent(client, load_flights_dataset())
 # g = {'result': None, 'date': date, 'self': a}
-# exec("result = self.find_flights('JFK', 'DEN', date(2023, 12, 30))", g)
+# exec("result = self.find_flights('LAX', 'JFK', date(2023, 1, 2))", g)
 # print(g)
 
 
