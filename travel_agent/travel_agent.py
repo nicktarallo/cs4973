@@ -281,26 +281,26 @@ def eval_agent(client: OpenAI, benchmark_file: str, flights: List[Flight]) -> fl
     return EvaluationResult(1.0, agent.conversation)
 
 
+if __name__ == '__main__':
+    # Agent()
 
-# Agent()
+    client = OpenAI(base_url=BASE_URL, api_key=API_KEY)
+    flights = load_flights_dataset()
 
-client = OpenAI(base_url=BASE_URL, api_key=API_KEY)
-flights = load_flights_dataset()
-
-# a = Agent(client, load_flights_dataset())
-# g = {'result': None, 'date': date, 'self': a}
-# exec("result = self.find_flights('LAX', 'JFK', date(2023, 1, 2))", g)
-# print(g)
+    # a = Agent(client, load_flights_dataset())
+    # g = {'result': None, 'date': date, 'self': a}
+    # exec("result = self.find_flights('LAX', 'JFK', date(2023, 1, 2))", g)
+    # print(g)
 
 
-results = []
-for p in Path(".").glob("*.yaml"):
-    results.append(eval_agent(client, p, flights))
+    results = []
+    for p in Path(".").glob("*.yaml"):
+        results.append(eval_agent(client, p, flights))
 
-# results.append(eval_agent(client, 'test4.yaml', load_flights_dataset()))
+    # results.append(eval_agent(client, 'test4.yaml', load_flights_dataset()))
 
-for result in results:
-    print(result.score)
-    print(result.conversation)
-    print()
-print(statistics.mean(r.score for r in results))
+    for result in results:
+        print(result.score)
+        print(result.conversation)
+        print()
+    print(statistics.mean(r.score for r in results))
