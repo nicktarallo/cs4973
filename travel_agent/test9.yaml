@@ -1,0 +1,32 @@
+# Flight Booking Conversation Sequence
+
+- prompt: "Hi, I'm looking to book a flight from New York to San Francisco next month."
+  expected_type: "text"
+  comment: "Initial query to test the agent's ability to identify JFK as the likely origin for New York and SFO as the destination."
+
+- prompt: "Great, I'd like to depart on October 15th. Can you show me available flights?"
+  expected_type: "find-flights"
+  expected_result: [21939, 21940, 21945, 21946, 21960, 21984, 21988, 21989, 21990, 22013]
+  comment: "Tests the agent's ability to search for flights on a specific date between JFK and SFO."
+
+- prompt: "What's the earliest flight among these options?"
+  expected_type: "text"
+  expected_result: 22013
+  comment: "Checks if the agent can provide additional information about the flight options."
+
+- prompt: "That works for me. I'd like to book the earliest flight, please."
+  expected_type: "book-flight"
+  expected_result: 22013
+  comment: "Tests the agent's ability to select and book the appropriate flight based on the user's preference."
+
+- prompt: "Can you confirm my booking details?"
+  expected_type: "text"
+  comment: "Checks if the agent can provide a summary of the booked flight."
+
+- prompt: "Actually, I just realized I might need to change my plans. What's your policy on cancellations?"
+  expected_type: "text"
+  comment: "Tests the agent's knowledge of airline policies and ability to provide relevant information."
+
+- prompt: "Great, that's all I needed. Thank you for your help!"
+  expected_type: "text"
+  comment: "Concludes the conversation and tests the agent's ability to provide a polite closing response."

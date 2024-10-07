@@ -1,0 +1,29 @@
+# Alternative Flight Booking Conversation Sequence
+
+- prompt: Hello, I need to fly from New York to Atlanta for a business trip next week.
+  expected_type: find_flights
+  expected_result: [19195, 19269, 19350, 19351, 19429, 19511]
+  comment: "Initial query to test the agent's ability to identify ORD as the origin for Chicago and ATL as the destination."
+
+- prompt: I'm flexible with the dates. What are my options for Tuesday through Thursday?
+  expected_type: find-flights
+  expected_result: [19511]
+  comment: "Tests the agent's ability to search for flights across multiple dates between ORD and ATL."
+
+- prompt: Which of these flights have the shortest travel time?
+  expected_type: find_flights
+  expected_result: [19511]
+  comment: "Checks if the agent can analyze and compare flight durations."
+
+- prompt: Great, I'll take the direct flight on Wednesday. Please book it for me.
+  expected_type: book-flight
+  expected_result: 19511
+  comment: "Tests the agent's ability to select and book the appropriate flight based on the user's preferences."
+
+- prompt: "Now, can you add a seat selection for a window seat?"
+  expected_type: "text"
+  comment: "Checks the agent's ability to handle additional requests and modify the booking."
+
+- prompt: "Thank you for all your help. I think I'm all set now."
+  expected_type: "text"
+  comment: "Concludes the conversation and tests the agent's ability to provide a polite closing response."

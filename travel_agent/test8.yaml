@@ -1,0 +1,20 @@
+- prompt: I am planning to have honeymoon on New Year's Day 2023 at New York. We will fly from Denver. List me the available flights?
+  expected_type: find_flights
+  expected_results: [69,70]
+- prompt: I am a member of Delta airline. Can you get the first one that day?
+  expected_type: book_flight
+  expected_results: 70
+- prompt: This is a week-long trip. Can I check availability of return flight?
+  expected_type: find_flights
+  expected_results: [514,515]
+- prompt: Book Delta again, so it gets cheap.
+  expected_type: book_flight
+  expected_results: null
+- prompt: Can you check 01/08/2023 for Delta?
+  expected_type: find_flights
+  expected_results: null
+- prompt: Never mind then. Get me the first one to return on 01/07/2023
+  expected_type: book_flight
+  expected_results: null
+- prompt: thanks
+  expected_type: text
