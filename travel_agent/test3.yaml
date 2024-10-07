@@ -1,0 +1,14 @@
+- prompt: I need to head to Boston two days from now. I live close to Dallas
+  expected_type: find-flights
+  expected_result: [18738, 18739, 18740]
+- prompt: I prefer delta, so please book that one
+  expected_type: book-flight
+  expected_result: 18740
+- prompt: I need to return 7 days after that, what are my options?
+  expected_type: find-flights
+  expected_result: [19333]
+- prompt: dang it, I dont like southwest. I guess that's my only option though, so book it pal.
+  expected_type: book-flight
+  expected_result: 19333
+- prompt: Have a good one.
+  expected_type: text

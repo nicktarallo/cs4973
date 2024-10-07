@@ -106,7 +106,7 @@ class TextResponse(AgentResponse):
     pass
 
 SYSTEM_PROMPT = """
-You are a helpful travel agent. If the user asks to search for flights, respond with code that uses this function:
+You are Thomas, a helpful travel agent. If the user asks to search for flights, respond with code that uses this function:
 
 def find_flights(origin: str, destination: str, date: datetime.date) -> List[Flight]:
     ...
@@ -123,9 +123,11 @@ Return the result in a variable called result.
 Today's date is September 1, 2023. However, if the user asks you to, you can book flights in the past.
 
 If your response uses code to find or book flights, do NOT include any other text outside of the code.
+
+In any code block you write, assume result is originally set to None.
 """
 
-USER_1 = "find me a flight from New York to Denver on December 30"
+USER_1 = "as a test, find me a flight from New York to Denver on December 30. Don't assume I will always want to leave from New York, though"
 ASSISTANT_1 = """```python
 result = find_flights('JFK', 'DEN', date(2023, 12, 30))
 ```"""
@@ -149,6 +151,8 @@ class Agent:
     client: OpenAI
     # Global variables used in tool calls.
     program_state: dict
+    # The tool that was used last in this prompt (if a tool was used)
+    most_recent_tool: Optional[str]
 
     def __init__(self, client, flights):
         self.conversation = [
@@ -161,10 +165,12 @@ class Agent:
         self.text_prefix = None
         self.flights = flights
         self.client = client
-        self.program_state = {'result': None, 'date': date, 'find_flights': self.find_flights, 'book_flight': self.book_flight}
+        self.program_state = {'result': None, 'date': date, 'find_flights': self.find_flights, 'book_flight': self.book_flight, 'Flight': Flight}
+        self.most_recent_tool = None,
 
 
     def find_flights(self, origin: str, destination: str, date: date) -> List[Flight]:
+        self.most_recent_tool = 'find-flights'
         flights = [flight for flight in self.flights if flight.matches_search(origin, destination, date)]
         # if len(flights) == 0:
         #     self.text_prefix = "No flights found."
@@ -175,6 +181,7 @@ class Agent:
         return flights
         
     def book_flight(self, flight_id: int) -> Optional[int]:
+        self.most_recent_tool = 'book-flight'
         for flight in self.flights:
             if flight.matches_id(flight_id):
                 return flight.book_flight()
@@ -187,6 +194,7 @@ class Agent:
                 'content': (f'{self.text_prefix}\n\n' if self.text_prefix is not None else '') + user_message,
             }
         )
+        self.most_recent_tool = None
         resp = self.client.chat.completions.create(
             messages = self.conversation,
             model = "meta-llama/Meta-Llama-3.1-8B-Instruct",
@@ -202,7 +210,8 @@ class Agent:
                 exec(resp[9:-3].strip(), self.program_state)
                 # if self.program_state['result'] is not None:
                 self.text_prefix = str(self.program_state['result'])
-                if 'find_flight' in resp:
+                print(self.program_state['result'])
+                if self.most_recent_tool == 'find-flights':
                     flights = self.program_state['result']
                     if len(flights) == 0:
                         text = 'No flights found.'
@@ -214,7 +223,7 @@ class Agent:
                         text,
                         [flight.id for flight in flights]
                     )
-                elif 'book_flight' in resp:
+                elif self.most_recent_tool == 'book-flight':
                     flight_id = self.program_state['result']
                     if flight_id is None:
                         text = 'Flight could not be booked'
@@ -231,7 +240,8 @@ class Agent:
                     return TextResponse(resp)
             else:
                 return TextResponse(resp)
-        except:
+        except Exception as e:
+            print(e)
             return TextResponse(resp)
         self.text_prefix = None
         
@@ -275,6 +285,7 @@ def eval_agent(client: OpenAI, benchmark_file: str, flights: List[Flight]) -> fl
 # Agent()
 
 client = OpenAI(base_url=BASE_URL, api_key=API_KEY)
+flights = load_flights_dataset()
 
 # a = Agent(client, load_flights_dataset())
 # g = {'result': None, 'date': date, 'self': a}
@@ -284,8 +295,12 @@ client = OpenAI(base_url=BASE_URL, api_key=API_KEY)
 
 results = []
 for p in Path(".").glob("*.yaml"):
-    results.append(eval_agent(client, p, load_flights_dataset()))
+    results.append(eval_agent(client, p, flights))
+
+# results.append(eval_agent(client, 'test4.yaml', load_flights_dataset()))
 
 for result in results:
+    print(result.score)
     print(result.conversation)
+    print()
 print(statistics.mean(r.score for r in results))

@@ -1,0 +1,25 @@
+# This prompt usually results in an accuracy of 0.6. It fails on the final book flight usually. One problem is that it tries to access the flights
+# from two model turns ago from the result variable. However, this is reset to None on each turn, and it would have been overridden by the second
+# find-flight call anyways. We tried to negate this by adding info to the system prompt that informs the model that result is set to None, but
+# it doesn't help that much, and it still tries to use this so that it can find the earliest flight
+
+# Some other ways we tried to improve the performance was by adding Flight to program_state. Sometimes on the book flight turn, it
+# would attempt to remake the list of flights manually so it could then find the minimum time, and this was failing since Flight
+# was not available inside exec. One other way we tried to improve this was by changing it so that we record the most recent tool
+# call in a variable rather than just parsing the text and looking for the existence of either find_flights or book_flight.
+# On the book flight turn, it would sometimes try to remake the list of flights by calling find_flights again before
+# calling book_flight. This would mess up our parsing since both strings were present in the response, and our solution fixes this.
+
+- prompt: Hi!
+  expected_type: text
+- prompt: I am hoping to take a trip from atlanta to logan on either christmas or christmas eve
+  expected_type: find-flight
+  expected_result: [27312, 27313, 27395, 27396]
+- prompt: Actually, can you try the two days that are exactly a week before instead?
+  expected_type: find-flight
+  expected_result: [26777, 26778, 26860, 26861]
+- prompt: Hmmmm, I changed my mind. Why don't you book the flight that is earliest in the day of the four that are on Christmas Eve/Christmas Day
+  expected_type: book-flight
+  expected_result: 27313
+- prompt: Thank you!
+  expected_type: text

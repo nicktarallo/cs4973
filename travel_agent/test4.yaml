@@ -1,0 +1,24 @@
+# One initial challenge with this test case was that the model was assuming that the person was leaving from New York since the 
+# origin was not clearly stated. It was therefore inferring from the few-shot prompting earlier in the conversation that the 
+# origin was New York since it was in those parts of the conversation. To fix this, we modified the early turns used for few-shot
+# to make it clear that it should not be assumed NYC is the origin for future cases.
+
+# Another challenge that rises with this case is when the user asks to try booking for the second time, it switches to the other
+# flight rather than trying to book the one that the user asked for. This causes the result of book flight to not be null since the
+# other flight is bookable. There is not an easy way to fix this since it is due to poor interpretation of the user's intent by the model.
+# Sometimes, it interprets the user correctly and gets 1.0 accuracy, but this is not very common.
+
+- prompt: My hometown Dolphins are playing an away game against the seahawks on October 17. I want to travel with the team. I need to get there a day early.
+  expected_type: find-flights
+  expected_result: [22058, 22059]
+- prompt: Delta is my favorite airline! Get me on that one.
+  expected_type: book-flight
+  expected_result: null
+- prompt: Booking didn't work?? Can you try again?
+  expected_type: book-flight
+  expected_result: null
+- prompt: Darn it! Do you know why it can't be booked?
+  expected_type: text
+- prompt: I guess book the other available flight then...
+  expected_type: book-flight
+  expected_result: 22059

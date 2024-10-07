@@ -1,0 +1,16 @@
+- prompt: I want to leave from one of the 3 NYC area airports and go to either Miami or San Francisco in four days.
+  expected_type: find-flights
+  expected_result: [18892, 18964, 18965, 18966, 18955, 18956]
+- prompt: I'll take the one to Miami from JFK. It sounds like the best option to me
+  expected_type: book-flight
+  expected_result: 18892
+- prompt: Find me a return flight on the 10th please.
+  expected_type: find-flights
+  expected_result: [19289, 19290]
+- prompt: I'll go for UA1361
+  expected_type: book-flight
+  expected_result: 19290
+- prompt: I can't wait for my vacation!!! What is your favorite place to go on vacation?
+  expected_type: text
+- prompt: Sounds like fun!
+  expected_type: text

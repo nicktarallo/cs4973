@@ -1,0 +1,19 @@
+# This test shows the ability of our system to do multiple tools in one turn, as it can find flights and then book one by calling
+# both tools in a row. This was made possible due to our changes that were made to support a previous test that made it so that the
+# most recent tool call was saved in a variable rather than determining which tool was used based solely on text parsing. When we just used
+# text parsing, it would be harder to tell which tool was most recently used because both tool names showed up in the code, but now
+# it is easy to know that the final result belongs to book-flight since it gets stored in the agent.most_recent_tool variable.
+
+# Even though this often scores a 1.0 on our benchmark, this is not exactly correct since the last question that asks "What airline is it?"
+# is not actually correctly answered. The model tries to answer the question with code since this data is not available based on the flight
+# id that was booked. However, this code does not call either tool correctly, so the model just dumps it out as text, so it matches the
+# expected text response even though the text does not actually answer the question.
+
+- prompt: I need to head to go from Newark to Miami exactly 1 month from now. Find flights and book the first one.
+  expected_type: book-flight
+  expected_result: 20936
+- prompt: Two days after that, I want to go straight from there to LA. Book the first flight available
+  expected_type: book-flight
+  expected_result: 21081
+- prompt: What airline is it?
+  expected_type: text
