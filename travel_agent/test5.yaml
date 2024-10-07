@@ -1,3 +1,7 @@
+# This prompt challenges the model by requiring it to search for multiple dates. The model was pretty good at simply adding the result
+# of two tool calls to get all of the flights for two days, but we later added a start and end date to our find flights method to make it
+# easier.
+
 # This prompt usually results in an accuracy of 0.6. It fails on the final book flight usually. One problem is that it tries to access the flights
 # from two model turns ago from the result variable. However, this is reset to None on each turn, and it would have been overridden by the second
 # find-flight call anyways. We tried to negate this by adding info to the system prompt that informs the model that result is set to None, but

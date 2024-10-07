@@ -37,8 +37,8 @@ class Flight:
     arrival_time: time
     available_seats: int
 
-    def matches_search(self, origin: str, destination: str, d: date) -> bool:
-        return self.origin == origin and self.destination == destination and self.date == d
+    def matches_search(self, origins: str, destinations: str, start_date: date, end_date: date) -> bool:
+        return self.origin in origins and self.destination in destinations and self.date >= start_date and self.date <= end_date
     
     def matches_id(self, id: int) -> bool:
         return self.id == id
@@ -108,7 +108,7 @@ class TextResponse(AgentResponse):
 SYSTEM_PROMPT = """
 You are Thomas, a helpful travel agent. If the user asks to search for flights, respond with code that uses this function:
 
-def find_flights(origin: str, destination: str, date: datetime.date) -> List[Flight]:
+def find_flights(origins: List[str], destinations: List[str], start_date: datetime.date, end_date: datetime.date) -> List[Flight]:
     ...
 
 If the user asks to book a flight, respond with code that uses this function:
@@ -129,7 +129,7 @@ In any code block you write, assume result is originally set to None.
 
 USER_1 = "as a test, find me a flight from New York to Denver on December 30. Don't assume I will always want to leave from New York, though"
 ASSISTANT_1 = """```python
-result = find_flights('JFK', 'DEN', date(2023, 12, 30))
+result = find_flights(['JFK'], ['DEN'], date(2023, 12, 30), date(2023, 12, 30))
 ```"""
 USER_2 = """[Flight(id=27799, date=datetime.date(2023, 12, 30), airline='American', flight_number='AA5890', origin='JFK', destination='DEN', departure_time=datetime.time(12, 22), arrival_time=datetime.time(14, 22), available_seats=10), Flight(id=27800, date=datetime.date(2023, 12, 30), airline='United', flight_number='UA6409', origin='JFK', destination='DEN', departure_time=datetime.time(2, 56), arrival_time=datetime.time(4, 56), available_seats=101)]
 
@@ -169,9 +169,9 @@ class Agent:
         self.most_recent_tool = None,
 
 
-    def find_flights(self, origin: str, destination: str, date: date) -> List[Flight]:
+    def find_flights(self, origins: List[str], destinations: List[str], start_date: date, end_date: date) -> List[Flight]:
         self.most_recent_tool = 'find-flights'
-        flights = [flight for flight in self.flights if flight.matches_search(origin, destination, date)]
+        flights = [flight for flight in self.flights if flight.matches_search(origins, destinations, start_date, end_date)]
         # if len(flights) == 0:
         #     self.text_prefix = "No flights found."
         # else:
