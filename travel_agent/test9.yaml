@@ -1,23 +1,25 @@
-# Flight Booking Conversation Sequence
+# This tests the models ability to answer specific questions about the flights that it found prior to booking. We made this possible and
+# improved our results here by including the results of previous tool calls in the 
+# conversation history itself above the user's request so that the model has context
+# to answer other questions with. Then, we are able to book based on the model's answers to those questions. Then, the user asks various
+# questions about the booking and airline policies to see if the model will try to answer them to the best of their ability without
+# trying to write code where it isn't necessary.
 
-- prompt: Hi, I'm looking to book a flight from New York to San Francisco next month.
-  expected_type: find_flights
-  expected_result: [20943, 21023, 21104, 21105, 21106, 21183, 21184, 21257, 21258, 21259, 21326, 21398, 21399, 21478, 21558, 21639, 21640, 21641, 21718, 21719, 21792, 21793, 21794, 21861, 21933, 21934, 22013, 22093, 22174, 22175, 22176, 22253, 22254, 22327, 22328, 22329, 22396, 22468, 22469, 22548, 22628, 22709, 22710, 22711, 22788, 22789, 22862, 22863, 22864, 22931, 23003, 23004, 23083, 23163, 23244, 23245, 23246]
-  comment: "Initial query to test the agent's ability to identify JFK as the likely origin for New York and SFO as the destination."
+# Sometimes it was writing code not in markdown backticks, which would then result in a text response rather than the necessary find flights or
+# book flight response. We improved this with an additional instruction in the system prompt to tell it to always put code in backticks.
 
-- prompt: Great, I'd actually like to depart on October 15th. Can you show me available flights?
+- prompt: I'd look to book a flight from Chicago to San Francisco on October 15th. Can you show me available flights?
   expected_type: find-flights
-  expected_result: [22013]
+  expected_result: [21939, 21940]
   comment: "Tests the agent's ability to search for flights on a specific date between JFK and SFO."
 
 - prompt: "What's the earliest flight among these options?"
   expected_type: "text"
-  expected_result: 22013
   comment: "Checks if the agent can provide additional information about the flight options."
 
 - prompt: "That works for me. I'd like to book the earliest flight, please."
   expected_type: "book-flight"
-  expected_result: 22013
+  expected_result: 21939
   comment: "Tests the agent's ability to select and book the appropriate flight based on the user's preference."
 
 - prompt: "Can you confirm my booking details?"

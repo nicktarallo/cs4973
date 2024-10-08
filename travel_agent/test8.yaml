@@ -1,3 +1,11 @@
+# There are a few challenges with the model here. One limitation of the model here is that it has trouble interpreting what a week-long trip is
+# If the trip is one week, the return should be on the seventh day, but the model usually writes code that searches for the return on the eighth day.
+# Also, the user asks to book Delta for the return trip even though none of the flights are Delta. The model should refuse to book with text,
+# but it would sometimes instead try to book a random flight from the results even though it was not Delta. We fixed this by adding an instruction 
+# in the system prompt to not book if the airline the user asks for is not available for the flight. 
+# Another thing that we test here is the ability for the model to filter after calling find_flights, so that it can filter out flights
+# that are not delta (this is seen when we ask "Can you check 01/08/2023 for Delta?"). Since the find_flights tool doesn't have an
+# airline filter, the model must be more ingenuitive with its code to filter it out.
 - prompt: I am planning to have honeymoon on New Year's Day 2023 at New York. We will fly from Denver. List me the available flights?
   expected_type: find_flights
   expected_results: [69,70]

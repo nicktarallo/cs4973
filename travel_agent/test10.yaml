@@ -1,25 +1,34 @@
 # Alternative Flight Booking Conversation Sequence
+# We included this test to check for its ability to look at multiple dates with reference to terms like "next week" and "Tuesday through Thursday"
+# While we were able to improve the performance for multiple dates by adding a date range search to find_flights, which helped a little, it generally
+# struggles with terms like next week, as it doesn't seem to be able to compute when next week starts (either Sunday or Monday), and generally
+# just goes out 7 days from today (or 7 days from one week from now, neither of which would be what the user is intending since the start date is a Friday,
+# so next week would just start 2-3 days out)
 
 - prompt: Hello, I need to fly from New York to Atlanta for a business trip next week.
   expected_type: find_flights
-  expected_result: [18734, 18815, 18816, 18894, 18976, 19195]
-  comment: "Initial query to test the agent's ability to identify ORD as the origin for Chicago and ATL as the destination."
+  expected_result: [19195, 19269, 19350, 19351, 19429, 19511]
+  comment: Initial query to test the agent's ability to identify JFK as the origin for New York and ATL as the destination.
 
 - prompt: I'm flexible with the dates. What are my options for Tuesday through Thursday?
   expected_type: find-flights
-  expected_result: [18976]
-  comment: "Tests the agent's ability to search for flights across multiple dates between ORD and ATL."
+  expected_result: [19511]
+  comment: Tests the agent's ability to search for flights across multiple dates between ORD and ATL.
 
 - prompt: Which of these flights have the shortest travel time?
   expected_type: find_flights
-  expected_result: [18976]
+  expected_result: [19511]
   comment: "Checks if the agent can analyze and compare flight durations."
 
 - prompt: Great, I'll take the direct flight on Wednesday. Please book it for me.
   expected_type: book-flight
-  expected_result: 18976
+  expected_result: 19511
   comment: "Tests the agent's ability to select and book the appropriate flight based on the user's preferences."
 
-- prompt: Thank you for all your help. I think I'm all set now.
-  expected_type: text
+- prompt: "Now, can you add a seat selection for a window seat?"
+  expected_type: "text"
+  comment: "Checks the agent's ability to handle additional requests and modify the booking."
+
+- prompt: "Thank you for all your help. I think I'm all set now."
+  expected_type: "text"
   comment: "Concludes the conversation and tests the agent's ability to provide a polite closing response."

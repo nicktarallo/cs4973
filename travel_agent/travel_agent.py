@@ -129,6 +129,8 @@ In any code block you write, assume result is originally set to None.
 If the person asks to book a flight from an airline that isn't available from the flights that are found, you should not attempt to book and should refuse with text.
 
 Make sure if you respond with code to use markdown backticks with python.
+
+When calling find_flights, make sure to only include the range of dates that the user actually wants to fly on. Don't get confused with other dates.
 """
 
 USER_1 = "as a test, find me a flight from New York to Denver between December 29 and December 31. Don't assume I will always want to leave from New York, though"
@@ -208,7 +210,7 @@ class Agent:
                 exec(resp[9:-3].strip(), self.program_state)
                 # if self.program_state['result'] is not None:
                 self.text_prefix = str(self.program_state['result'])
-                print(self.program_state['result'])
+                # print(self.program_state['result'])
                 if self.most_recent_tool == 'find-flights':
                     flights = self.program_state['result']
                     if len(flights) == 0:
@@ -239,7 +241,7 @@ class Agent:
             else:
                 return TextResponse(resp)
         except Exception as e:
-            print(e)
+            # print(e)
             return TextResponse(resp)
         self.text_prefix = None
         

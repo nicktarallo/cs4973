@@ -4,7 +4,8 @@
 # get 1.0 accuracy or get 0.0 accuracy if it didn't do it right. We improved our find flights tool to take in a list of origins and a list of
 # destinations (as well as start and dates to specify a range, which is useful for a different test). This makes it a lot easier on the model,
 # so it can just call the tool with a list rather than having to generate additional code itself to properly account for all combinations.
-# This resulted in more consistent 1.0 accuracy results.
+# This resulted in more consistent 1.0 accuracy results. One other challenge we got was that it would sometimes include all four days in find_flights
+# This was improved with an additional instruction in the system prompt to make sure to only include the actual flight dates in find_flights.
 
 - prompt: I want to leave from one of the 3 NYC area airports and go to either Miami or San Francisco in four days.
   expected_type: find-flights

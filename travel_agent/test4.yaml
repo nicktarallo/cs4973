@@ -6,7 +6,8 @@
 # An additional challenge that came up when we added the ability to search between two dates is that it includes both the travel date and
 # the game date for its find flights call, when it should only be including the travel date. This new feature helped with some other test
 # cases, but seems to have caused an issue here. This is poor interpretation of date logic from the user and is hard to fix without
-# messing up other test cases.
+# messing up other test cases. We tried to add an instruction to the system prompt to make sure it only includes the actual travel dates, which
+# worked for test7 but not test4.
 
 # Another challenge that rises with this case is when the user asks to try booking for the second time, it switches to the other
 # flight rather than trying to book the one that the user asked for. This causes the result of book flight to not be null since the
