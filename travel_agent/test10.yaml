@@ -3,7 +3,7 @@
 # While we were able to improve the performance for multiple dates by adding a date range search to find_flights, which helped a little, it generally
 # struggles with terms like next week, as it doesn't seem to be able to compute when next week starts (either Sunday or Monday), and generally
 # just goes out 7 days from today (or 7 days from one week from now, neither of which would be what the user is intending since the start date is a Friday,
-# so next week would just start 2-3 days out)
+# so next week would just start 2-3 days out). 
 
 - prompt: Hello, I need to fly from New York to Atlanta for a business trip next week.
   expected_type: find_flights

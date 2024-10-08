@@ -1,4 +1,4 @@
-# This is meant to challenge the model by having multiple origins and destinations. Originally, our find flights tool could only take
+# This test is meant to challenge the model by having multiple origins and destinations. Originally, our find flights tool could only take
 # one origin and one destination, which challenged the model to write code that would use the tool call for each potential combination of
 # origin/destination and build the result list by adding them together. This was pretty hit or miss, as it would either do this correctly and
 # get 1.0 accuracy or get 0.0 accuracy if it didn't do it right. We improved our find flights tool to take in a list of origins and a list of

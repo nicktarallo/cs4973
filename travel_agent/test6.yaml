@@ -1,4 +1,4 @@
-# This test shows the ability of our system to do multiple tools in one turn, as it can find flights and then book one by calling
+# This test was included to show the ability of our system to do multiple tools in one turn, as it can find flights and then book one by calling
 # both tools in a row. This was made possible due to our changes that were made to support a previous test that made it so that the
 # most recent tool call was saved in a variable rather than determining which tool was used based solely on text parsing. When we just used
 # text parsing, it would be harder to tell which tool was most recently used because both tool names showed up in the code, but now

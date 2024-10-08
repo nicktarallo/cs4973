@@ -1,3 +1,5 @@
+# The purpose of this test is mainly to look at model inference as well as expected results when a flight is full and can't be booked
+
 # One initial challenge with this test case was that the model was assuming that the person was leaving from New York since the 
 # origin was not clearly stated. It was therefore inferring from the few-shot prompting earlier in the conversation that the 
 # origin was New York since it was in those parts of the conversation. To fix this, we modified the early turns used for few-shot

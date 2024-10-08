@@ -1,4 +1,5 @@
 # This is a simple test that checks the models basic ability to do a single find flight, book flight, and text response.
+# It is meant to test basic capabilities of the agent.
 # It worked well from the start
 
 - prompt: I need to get from LA to jfk on Sep 27

@@ -126,7 +126,9 @@ If your response uses code to find or book flights, do NOT include any other tex
 
 In any code block you write, assume result is originally set to None.
 
-If the person asks to book a flight from an airline that isn't available from the flights that are found, you should not attempt to book and should refuse with text.
+If the person asks to book a flight from an airline that isn't available from the flights that are found, you should not attempt to book and should refuse with text. 
+
+You can book flights from previous searches if the user asks.
 
 Make sure if you respond with code to use markdown backticks with python.
 

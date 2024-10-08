@@ -1,5 +1,10 @@
-# This is a test that checks the of the model to infer a bit more, with multiple bookings. The second date is dependent on the first date,
+# This is a test that checks the of the model to infer a bit more, with multiple bookings in a row and date relationships being used rather
+# than explicit dates. The second date is dependent on the first date,
 # so it tests the reasoning of the model in terms of dates to either add 7 days itself, or use code to add 7 days to the previous date.
+# Some odd behavior that sometimes occurs here is that the last book flight call sometimes includes text along with the code, which messes with
+# the parsing of the text since it is not clear whether to run it as code or not. To combat this, a message was added in the system prompt to
+# make sure it doesn't include text when returning code. This mostly fixed the issue, but every once in a while, the fourth step may fail
+# resulting in an accuracy of 0.6 instead of 1.0.
 
 - prompt: I need to head to Boston two days from now. I live close to Dallas
   expected_type: find-flights
@@ -10,7 +15,7 @@
 - prompt: I need to return 7 days after that, what are my options?
   expected_type: find-flights
   expected_result: [19333]
-- prompt: dang it, I dont like southwest. I guess that's my only option though, so book it pal.
+- prompt: book it. not a great airline but whatever
   expected_type: book-flight
   expected_result: 19333
 - prompt: Have a good one.
