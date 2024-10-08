@@ -1,9 +1,5 @@
 import gradio as gr
 from openai import OpenAI
-from typing import List
-from datasets import load_dataset
-from datetime import date
-import dataclasses
 from travel_agent import Agent, FindFlightsResponse, BookFlightResponse, load_flights_dataset
 
 # Initialize the OpenAI client and load flights dataset from your script
@@ -27,7 +23,7 @@ iface = gr.ChatInterface(
     title="LLM Travel Agent",
     description="Chat with Thomas, your travel assistant. Ask any travel-related questions or make bookings.",
     examples=[
-        ["Find a flight from New York to Los Angeles on Dec 20, 2023"],
+        ["Find a flight from Dallas to San Francisco on October 15, 2023"],
         ["Book the second flight from the previous search"]
     ]
 )

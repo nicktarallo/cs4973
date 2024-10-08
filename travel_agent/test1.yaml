@@ -1,8 +1,11 @@
-- prompt: I need to get from LA to jfk on jan 2, 2023
+# This is a simple test that checks the models basic ability to do a single find flight, book flight, and text response.
+# It worked well from the start
+
+- prompt: I need to get from LA to jfk on Sep 27
   expected_type: find-flights
-  expected_result: [79, 80]
+  expected_result: [20572, 20573]
 - prompt: book the first one
   expected_type: book-flight
-  expected_result: 79
+  expected_result: 20572
 - prompt: Thank you!
   expected_type: text

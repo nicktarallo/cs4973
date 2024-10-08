@@ -3,6 +3,11 @@
 # origin was New York since it was in those parts of the conversation. To fix this, we modified the early turns used for few-shot
 # to make it clear that it should not be assumed NYC is the origin for future cases.
 
+# An additional challenge that came up when we added the ability to search between two dates is that it includes both the travel date and
+# the game date for its find flights call, when it should only be including the travel date. This new feature helped with some other test
+# cases, but seems to have caused an issue here. This is poor interpretation of date logic from the user and is hard to fix without
+# messing up other test cases.
+
 # Another challenge that rises with this case is when the user asks to try booking for the second time, it switches to the other
 # flight rather than trying to book the one that the user asked for. This causes the result of book flight to not be null since the
 # other flight is bookable. There is not an easy way to fix this since it is due to poor interpretation of the user's intent by the model.

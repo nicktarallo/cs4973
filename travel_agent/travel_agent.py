@@ -125,11 +125,15 @@ Today's date is September 1, 2023. However, if the user asks you to, you can boo
 If your response uses code to find or book flights, do NOT include any other text outside of the code.
 
 In any code block you write, assume result is originally set to None.
+
+If the person asks to book a flight from an airline that isn't available from the flights that are found, you should not attempt to book and should refuse with text.
+
+Make sure if you respond with code to use markdown backticks with python.
 """
 
-USER_1 = "as a test, find me a flight from New York to Denver on December 30. Don't assume I will always want to leave from New York, though"
+USER_1 = "as a test, find me a flight from New York to Denver between December 29 and December 31. Don't assume I will always want to leave from New York, though"
 ASSISTANT_1 = """```python
-result = find_flights(['JFK'], ['DEN'], date(2023, 12, 30), date(2023, 12, 30))
+result = find_flights(['JFK'], ['DEN'], date(2023, 12, 29), date(2023, 12, 31))
 ```"""
 USER_2 = """[Flight(id=27799, date=datetime.date(2023, 12, 30), airline='American', flight_number='AA5890', origin='JFK', destination='DEN', departure_time=datetime.time(12, 22), arrival_time=datetime.time(14, 22), available_seats=10), Flight(id=27800, date=datetime.date(2023, 12, 30), airline='United', flight_number='UA6409', origin='JFK', destination='DEN', departure_time=datetime.time(2, 56), arrival_time=datetime.time(4, 56), available_seats=101)]
 
@@ -172,12 +176,6 @@ class Agent:
     def find_flights(self, origins: List[str], destinations: List[str], start_date: date, end_date: date) -> List[Flight]:
         self.most_recent_tool = 'find-flights'
         flights = [flight for flight in self.flights if flight.matches_search(origins, destinations, start_date, end_date)]
-        # if len(flights) == 0:
-        #     self.text_prefix = "No flights found."
-        # else:
-        #     self.text_prefix = "Flights found:\n"
-        #     for flight in flights:
-
         return flights
         
     def book_flight(self, flight_id: int) -> Optional[int]:
@@ -294,8 +292,9 @@ if __name__ == '__main__':
 
 
     results = []
-    for p in Path(".").glob("*.yaml"):
-        results.append(eval_agent(client, p, flights))
+    # for p in Path(".").glob("*.yaml"):
+    #     results.append(eval_agent(client, p, flights))
+    results.append(eval_agent(client, 'test9.yaml', flights))
 
     # results.append(eval_agent(client, 'test4.yaml', load_flights_dataset()))
 

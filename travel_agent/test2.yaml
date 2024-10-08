@@ -1,0 +1,36 @@
+# This heavily tests the memory of the model, as there is a long conversation before asking about the first step of the conversation
+# It is accurately able to remember based on our method of adding the flight results to our agent.conversation variable.
+
+- prompt: I need to head to go from Miami to Atlanta on the 17, 18, or 19 of December
+  expected_type: find-flights
+  expected_result: [26868]
+- prompt: Nevermind, can I go to JFK on November 14 instead?
+  expected_type: find-flights
+  expected_result: [24266, 24267]
+- prompt: Book the American flight.
+  expected_type: book-flight
+  expected_result: 24266
+- prompt: Thank you!
+  expected_type: text
+- prompt: I need to return 7 days later, are there any flights?
+  expected_type: find-flights
+  expected_result: [24777]
+- prompt: Do you know if JetBlue is any good?
+  expected_type: text
+- prompt: I'll take it
+  expected_type: book-flight
+  expected_result: 24777
+- prompt: Can you check the flights for Miami to  Seattle on September 5 and 6
+  expected_type: find-flights
+  expected_result: [18926, 18927, 19009, 19010, 19011]
+- prompt: Can you book the JetBlue flight on the 5th?
+  expected_type: book-flight
+  expected_result: 18927
+- prompt: Just in case I miss that one, can you book the flight on the sixth with that same airline?
+  expected_type: book-flight
+  expected_result: 19011
+- prompt: Awesome, now I know I will make at least one
+  expected_type: text
+- prompt: Can you book me that flight to Atlanta you showed me beofre, I think I want to take it now.
+  expected_type: book-flight
+  expected_result: 26868

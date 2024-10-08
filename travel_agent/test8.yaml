@@ -8,13 +8,12 @@
   expected_type: find_flights
   expected_results: [514,515]
 - prompt: Book Delta again, so it gets cheap.
-  expected_type: book_flight
-  expected_results: null
+  expected_type: text
 - prompt: Can you check 01/08/2023 for Delta?
   expected_type: find_flights
-  expected_results: null
+  expected_results: []
 - prompt: Never mind then. Get me the first one to return on 01/07/2023
   expected_type: book_flight
-  expected_results: null
+  expected_results: 515
 - prompt: thanks
   expected_type: text
