@@ -12,18 +12,6 @@ BASE_URL = "http://199.94.61.113:8000/v1/"
 API_KEY = "tarallo.n@northeastern.edu:OQEgetkQ6LBofgWW4jsC"
 
 
-# client = OpenAI(base_url=BASE_URL, api_key=API_KEY)
-
-# resp = client.chat.completions.create(
-#     messages = [{ 
-#         "role": "user", 
-#         "content": "Write short complaint to The Boston Globe about the rat problem at Northeastern CS. Blame the math department. No more than 4 sentences." 
-#     }],
-#     model = "meta-llama/Meta-Llama-3.1-8B-Instruct",
-#     temperature=0)
-# print(resp.choices[0].message.content)
-
-
 
 @dataclasses.dataclass
 class Flight:
@@ -282,28 +270,3 @@ def eval_agent(client: OpenAI, benchmark_file: str, flights: List[Flight]) -> fl
                     return EvaluationResult(n / len(steps), agent.conversation)
     return EvaluationResult(1.0, agent.conversation)
 
-
-if __name__ == '__main__':
-    # Agent()
-
-    client = OpenAI(base_url=BASE_URL, api_key=API_KEY)
-    flights = load_flights_dataset()
-
-    # a = Agent(client, load_flights_dataset())
-    # g = {'result': None, 'date': date, 'self': a}
-    # exec("result = self.find_flights('LAX', 'JFK', date(2023, 1, 2))", g)
-    # print(g)
-
-
-    results = []
-    # for p in Path(".").glob("*.yaml"):
-    #     results.append(eval_agent(client, p, flights))
-    results.append(eval_agent(client, 'test9.yaml', flights))
-
-    # results.append(eval_agent(client, 'test4.yaml', load_flights_dataset()))
-
-    for result in results:
-        print(result.score)
-        print(result.conversation)
-        print()
-    print(statistics.mean(r.score for r in results))
