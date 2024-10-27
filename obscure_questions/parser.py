@@ -7,7 +7,6 @@ def parser(text: str):
     split by space, parse all the stop words, and remove punctuation
     """
     terms = text.split()
-    terms = [t.lower() for t in terms]
 
     stop_words = [
     "a", "about", "above", "after", "again", "against", "all", "am", "an", "and", "any", "are", "aren't", 
