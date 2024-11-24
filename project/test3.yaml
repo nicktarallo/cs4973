@@ -1,0 +1,54 @@
+- prompt: |
+    Job Title: Marketing Manager
+    Location: Boston, MA Type: Full-Time
+
+    About Us
+    Creative Horizons Inc. is a leading marketing agency specializing in innovative campaigns and strategic brand development. We pride ourselves on creativity, collaboration, and delivering exceptional results for our clients.
+
+    Job Description
+    We are seeking a passionate and experienced Marketing Manager to join our dynamic team. In this role, you will plan, develop, and execute marketing strategies to enhance brand awareness and drive customer engagement.
+
+    Key Responsibilities
+    - Develop and implement comprehensive marketing plans to promote products and services.
+    - Lead and coordinate marketing campaigns across various channels, including digital, print, and social media.
+    - Conduct market research to identify opportunities and monitor industry trends.
+    - Collaborate with the design and content teams to create compelling marketing materials.
+    - Analyze campaign performance and adjust strategies to maximize ROI.
+    - Manage the marketing budget and track expenditures.
+
+    Qualifications
+    - Bachelor’s degree in Marketing, Business, or related field.
+    - 3+ years of experience in marketing or a similar role.
+    - Strong understanding of digital marketing tools and techniques.
+    - Excellent communication and project management skills.
+    - Creative thinker with a passion for innovation.
+    - Proven ability to work collaboratively and lead a team.
+
+    Benefits
+    - Competitive salary and performance-based bonuses.
+    - Comprehensive health, dental, and vision insurance.
+    - 401(k) with company match.
+    - Flexible working hours and remote work options.
+    - Opportunities for professional development and growth.
+
+    To Apply: Send your resume and cover letter to careers@creativehorizons.com
+
+    Can you generate a resume for me to apply to this job based on the description?
+
+  answer: |
+    [TEXT TELLING USER TO PROVIDE MORE BACKGROUND INFORMATION]
+    Example:
+    Can you give me more of your background so I can properly generate a resume?
+
+
+- prompt: I graduated with a Bachelor's degree in Marketing from Boston University in May 2015. I worked at NextGen Marketing from May 2015 to May 2017 as a Marketing Coordinator, managing social media accounts and supporting promotional activities. From June 2017 to December 2019, I worked at Innovative Brands Inc. as an Assistant Marketing Manager, assisting in the development and execution of marketing campaigns and conducting market research. Since January 2020, I've been working at Creative Marketing Solutions as a Marketing Manager, leading marketing campaigns, conducting market research, and managing marketing budgets.
+  answer: '[TAILORED RESUME BASED ON THE PROVIDED INFORMATION]'
+
+- prompt: Are there any other jobs similar to this one available?
+  answer: |
+    [RETURN JOB DESCRIPTIONS BASED ON RETRIEVAL ALGORITHM THAT ARE SIMILAR TO THE ORIGINAL JOB DESCRIPTION]
+    Example:
+    Here are some other similar jobs that are available:
+    1. Job Title (Company) - Description
+    2. Job Title (Company) - Description
+

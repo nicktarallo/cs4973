@@ -1,0 +1,9 @@
+- prompt: "What skills do I need to transition from a data analyst role to a data scientist role?"
+  answer: |
+    To transition from a data analyst to a data scientist, you typically need to develop expertise in the following areas:
+    1. Programming: Advance your Python and R skills, focusing on libraries like TensorFlow, PyTorch, and Scikit-learn.
+    2. Machine Learning: Gain knowledge in supervised and unsupervised learning, model evaluation, and hyperparameter tuning.
+    3. Big Data: Familiarize yourself with tools like Hadoop, Spark, and SQL for handling large datasets.
+    4. Mathematics: Strengthen your understanding of linear algebra, calculus, and probability for machine learning.
+    5. Soft Skills: Enhance problem-solving and data storytelling abilities to communicate complex insights effectively.
+    You might also consider obtaining certifications such as AWS Certified Machine Learning or TensorFlow Developer.

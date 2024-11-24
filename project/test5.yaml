@@ -1,0 +1,78 @@
+- prompt: |
+    Job Title: Electrical Engineer
+    Location: Boston, MA Type: Full-Time
+
+    About Us
+    Innovative Tech Solutions is a leader in advanced technology and engineering services. We are committed to excellence and innovation in developing cutting-edge solutions for our clients.
+
+    Job Description
+    We are seeking a skilled and experienced Electrical Engineer to join our team. The ideal candidate will have extensive knowledge in electrical systems and a proven track record in designing, developing, and maintaining electrical components and systems.
+
+    Key Responsibilities
+    - Design and develop electrical systems and components.
+    - Conduct detailed electrical analysis and simulations.
+    - Collaborate with multidisciplinary teams to integrate electrical designs into larger systems.
+    - Troubleshoot and resolve electrical issues in both new and existing systems.
+    - Ensure compliance with industry standards and safety regulations.
+    - Prepare technical documentation and reports.
+
+    Qualifications
+    - Bachelor’s degree in Electrical Engineering or related field.
+    - 5+ years of experience in electrical engineering.
+    - Proficiency in electrical design software (e.g., AutoCAD, MATLAB, SPICE).
+    - Strong understanding of electrical theory and principles.
+    - Excellent problem-solving skills and attention to detail.
+    - Ability to work collaboratively in a team environment.
+    - Strong communication and project management skills.
+
+    Benefits
+    - Competitive salary and performance-based bonuses.
+    - Comprehensive health, dental, and vision insurance.
+    - 401(k) with company match.
+    - Flexible working hours and remote work options.
+    - Opportunities for professional development and growth.
+
+    I want to apply for this job. Here's my resume, what do you think?
+
+    Jane Smith Email: jane.smith@example.com Phone: (555) 987-6543 LinkedIn: linkedin.com/in/janesmith
+
+    Professional Summary
+    Enthusiastic and motivated recent graduate with a Bachelor’s degree in Electrical Engineering. Eager to apply knowledge and skills in a challenging engineering role.
+
+    Skills
+    - Basic knowledge of electrical theory and principles.
+    - Familiarity with AutoCAD and MATLAB.
+    - Strong analytical and problem-solving abilities.
+    - Effective communication and teamwork skills.
+    - Basic project management knowledge.
+
+    Professional Experience
+    - Intern XYZ Electronics Boston, MA June 2023 - August 2023
+    - Assisted in the design and testing of electrical components.
+    - Supported senior engineers in troubleshooting and resolving technical issues.
+    - Conducted basic electrical analysis and simulations under supervision.
+
+    Education
+    Bachelor of Science in Electrical Engineering University of Boston Boston, MA Graduated: May 2024
+
+    Certifications
+    - OSHA Safety Certificate
+
+    Projects
+    - Senior Design Project
+    - Designed a small-scale renewable energy system, integrating solar panels with battery storage.
+    - Basic Circuit Design Project
+    - Developed and tested simple electrical circuits as part of coursework.
+  answer: '[TEXT RESPONSE ABOUT NOT HAVING ENOUGH EXPERIENCE FOR THIS SEEMINGLY SENIOR LEVEL ROLE (SKILLS GAP ANALYSIS)]'
+
+- prompt: Oh :( I was really excited about that job. Do you know of any others that would be a good fit?
+  answer: '[RETRIEVAL BASED RESPONSE]'
+
+- prompt: For each of those jobs, tell me what skills match my experience, and what skills I might be missing.
+  answer: '[TEXT RESPONSE OF SKILLS GAP ANALYSIS]'
+
+- prompt: Would it be good for me to learn those missing skills, or do I have a shot at getting the jobs without them?
+  answer: '[TEXT RESPONSE ANSWERING USER QUESTION]'
+
+- prompt: How should I prepare for an interview at the first company
+  answer: '[TEXT RESPONSE ANSWERING USER QUESTION]'

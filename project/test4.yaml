@@ -1,0 +1,18 @@
+- prompt: I am a Python developer and I just got laid off. Do you know any jobs I can apply to?
+  answer: |
+    [JOBS RETURNED BASED ON RETRIEVAL ALGORITHM]
+    Example:
+    Here are some available jobs for Python developers:
+    1. ...
+    2. ...
+
+- prompt: Hmmm, those are ok, but not exactly what I'm looking for. Can you find jobs that use the previous language I mentioned as well as C++?
+  answer: |
+    [JOBS RETURNED BASED ON RETRIEVAL ALGORITHM (LOOKING FOR BOTH PYTHON AND C++)]
+    Example:
+    Here are some jobs for developers that are strong in both Python and C++
+    1. ...
+    2. ...
+
+- prompt: Write a cover letter for me for the second job.
+  answer: [WRITTEN COVER LETTER]

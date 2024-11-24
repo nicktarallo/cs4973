@@ -1,0 +1,7 @@
+- prompt: "Can you analyze my resume and suggest specific job openings that align with my skills?"
+  answer: |
+    Based on your resume, here are some job openings that align with your skills:
+    1. Data Analyst at XYZ Corp. (Location: Remote): Requires expertise in SQL, Python, and Tableau. Preferred experience in marketing analytics.
+    2. Junior Data Scientist at ABC Inc. (Location: San Francisco): Seeking candidates with machine learning basics, data visualization, and Python programming.
+    3. Business Intelligence Analyst at DEF Ltd. (Location: Chicago): Strong focus on Power BI, data warehousing, and stakeholder communication.
+    These suggestions are based on your expertise in data analysis, Python programming, and report generation. You might consider learning Power BI or enhancing your machine learning knowledge to expand your options further.

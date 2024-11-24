@@ -1,0 +1,94 @@
+- prompt: I am looking for a software engineering job. Also, my wife is looking for a job in finance. Would you be able to find some for us.
+- answer: |
+  [RETRIEVAL BASED RESPONSE THAT TRIES TO LOOK FOR BOTH JOBS, IDEALLY SEPARATELY IN SOME FORM]
+
+  Example:
+  Here are some software engineering jobs:
+  1.
+  2. 
+
+  Here are some finance jobs:
+  1.
+  2. 
+
+- prompt: |
+    Here's my wife's resume, what skills is she missing from those job descriptions?
+
+    Sarah Thompson 
+    Email: sarah.thompson@example.com Phone: (555) 234-5678 LinkedIn: linkedin.com/in/sarahthompson
+
+    Professional Summary
+    Finance professional with 7 years of experience in financial analysis, investment management, and strategic planning. Adept at optimizing financial processes and providing data-driven recommendations.
+
+    Skills
+    - Financial Analysis
+    - Investment Management
+    - Strategic Planning
+    - Risk Management
+    - Budgeting
+    - Financial Reporting
+    - Excel & Financial Modeling
+
+    Experience
+    - Senior Financial Analyst ABC Financial Services Boston, MA 2020 - Present
+    - Conducted financial analysis and modeling, managed investment portfolios, and developed budgeting processes.
+    - Financial Analyst XYZ Investment Group Boston, MA 2015 - 2019
+    - Analyzed financial statements, supported investment strategies, and conducted risk assessments.
+    - Junior Financial Analyst Global Financial Advisors Boston, MA 2013 - 2015
+    - Assisted in financial analysis, prepared reports, and conducted market research.
+
+    Education
+    - MBA in Finance Harvard Business School Cambridge, MA 2013
+    - B.S. in Finance University of Massachusetts Amherst, MA 2011
+
+    Certifications
+    - CFA
+    - CPA
+  answer: '[SKILLS GAP ANALYSIS HERE - IT SHOULD ONLY BE BASED ON THE PROVIDED FINANCIAL JOBS, NOT THE SOFTWARE ENGINEERING JOBS]'
+
+- prompt: |
+    Do the same for me now:
+
+    David Thompson 
+    Email: david.thompson@example.com Phone: (555) 345-6789 LinkedIn: linkedin.com/in/davidthompsonGitHub: github.com/davidthompson
+
+    Professional Summary
+    Skilled Software Engineer with 4 years of experience in full stack development, proficient in JavaScript, Python, and Java. Adept at building scalable web applications and collaborating effectively with cross-functional teams.
+
+    Skills
+    - Full Stack Development
+    - JavaScript, Python, Java
+    - React, Node.js, Django
+    - MySQL, MongoDB
+    - Git, Docker, Jenkins
+    - AWS, Azure
+
+    Experience
+    - Software Engineer Tech Innovators Boston, MA 2021 - Present
+    - Developed scalable web applications using React and Node.js.
+    - Collaborated with cross-functional teams to design and implement new features.
+    - Optimized application performance and resolved technical issues.
+    - Junior Software Engineer NextGen Solutions Boston, MA 2019 - 2021
+    - Assisted in developing web applications with Django and JavaScript.
+    - Conducted code reviews and provided feedback to junior developers.
+    - Participated in Agile development processes, contributing to sprint planning and retrospectives.
+
+    Education
+    Bachelor of Science in Computer Science Northeastern University Boston, MA Graduated: 2019
+
+    Projects
+    - E-Commerce Platform
+    - Developed a fully functional e-commerce platform using React and Node.js, leading to a 30% increase in user engagement.
+    - Automated Testing Framework
+    - Created an automated testing framework with Python and Selenium, reducing manual testing time by 40%.
+
+    Certifications
+    - AWS Certified Solutions Architect
+    - Certified Kubernetes Administrator (CKA)
+
+    References
+    Available upon request.
+  answer: '[SKILLS GAP ANALYSIS HERE - IT SHOULD ONLY BE BASED ON THE PROVIDED SOFTWARE ENGINEERING JOBS FROM TWO TURNS AGO, NOT THE FINANCIAL JOBS]'
+
+- prompt: Thank you!
+  answer: You're welcome! (or similar)

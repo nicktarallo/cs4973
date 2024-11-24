@@ -1,0 +1,45 @@
+- prompt: |
+    John Doe
+    Email: john.doe@example.com Phone: (555) 123-4567 LinkedIn: linkedin.com/in/johndoeGitHub: github.com/johndoe
+
+    Professional Summary
+    Innovative software engineer with 5+ years of experience in full stack development, specializing in designing and deploying scalable web applications.
+
+    Skills
+    Languages: JavaScript, Python, Java
+    Frameworks: React, Node.js, Django
+    Databases: MySQL, MongoDB
+    Tools: Git, Docker
+    Cloud: AWS, Azure
+
+    Experience
+    Senior Software Engineer Tech Solutions Inc. | Boston, MA Jan 2022 - Present
+    - Developed e-commerce platform with React and Node.js, boosting user engagement by 30%.
+    - Implemented CI/CD with Jenkins, cutting deployment time by 40%.
+
+    Software Engineer Innovative Apps LLC | Boston, MA Jun 2018 - Dec 2021
+    - Maintained RESTful APIs using Django, improving system efficiency by 25%.
+    - Collaborated with cross-functional teams on software solutions.
+
+    Education
+    B.S. in Computer Science Northeastern University | Boston, MA Graduated: May 2018
+
+    Certifications
+    - AWS Certified Solutions Architect
+    - Certified Kubernetes Administrator (CKA)
+
+    Projects
+    Smart Home Automation System
+    - Developed IoT-based home automation with Python and AWS IoT Core.
+
+    Personal Portfolio Website
+    - Designed a portfolio site using HTML, CSS, and JavaScript.
+
+    Can you find some jobs for me to apply to that would be a good fit based on my resume?
+  answer: |
+    [RESPONSE BASED ON RETRIEVAL WITH JOB APPLICATIONS]
+    Example:
+    Here are some jobs that fit your resume:
+
+- prompt: Can you tailor my resume based on the first one so it matches the job description even better?
+  answer: '[MODIFIED RESUME]'
