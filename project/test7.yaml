@@ -1,15 +1,15 @@
 - prompt: I am looking for a software engineering job. Also, my wife is looking for a job in finance. Would you be able to find some for us.
-- answer: |
-  [RETRIEVAL BASED RESPONSE THAT TRIES TO LOOK FOR BOTH JOBS, IDEALLY SEPARATELY IN SOME FORM]
+  answer: |
+    [RETRIEVAL BASED RESPONSE THAT TRIES TO LOOK FOR BOTH JOBS, IDEALLY SEPARATELY IN SOME FORM]
 
-  Example:
-  Here are some software engineering jobs:
-  1.
-  2. 
+    Example:
+    Here are some software engineering jobs:
+    1.
+    2. 
 
-  Here are some finance jobs:
-  1.
-  2. 
+    Here are some finance jobs:
+    1.
+    2. 
 
 - prompt: |
     Here's my wife's resume, what skills is she missing from those job descriptions?
@@ -48,7 +48,7 @@
 
 - prompt: |
     Do the same for me now:
-
+    
     David Thompson 
     Email: david.thompson@example.com Phone: (555) 345-6789 LinkedIn: linkedin.com/in/davidthompsonGitHub: github.com/davidthompson
 
