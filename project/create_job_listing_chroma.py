@@ -21,7 +21,7 @@ for listing in listings:
 
 
 # Create a ChromaDB client
-chroma_client = chromadb.Client()
+chroma_client = chromadb.PersistentClient(path="project/client")
 
 # Create a collection
 collection = chroma_client.create_collection(name="job_listing_collection")
