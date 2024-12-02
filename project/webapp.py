@@ -9,7 +9,6 @@ API_KEY = "tarallo.n@northeastern.edu:OQEgetkQ6LBofgWW4jsC"
 
 client = OpenAI(base_url=BASE_URL, api_key=API_KEY)
 
-
 # Create a ChromaDB client
 chroma_client = chromadb.PersistentClient(path="project/client")
 
@@ -19,11 +18,12 @@ collection = chroma_client.get_collection(name="job_listing_collection")
 # Initialize the agent from your script
 agent = Agent(client, collection)
 
-with open('project/temp/resume.txt', 'r') as f:
-    results = collection.query(
-        query_texts='hi',
-        n_results=5  # How many results to return
-    )
+# Function to handle file upload and load resume
+def load_resume(file):
+    with open(file.name, 'r') as f:
+        resume_content = f.read()
+    print(f"Loaded resume content: {resume_content}")
+    return "Resume uploaded successfully!"
 
 # Function to maintain and get response from the agent
 def respond_to_chat(message, chat_history):
@@ -31,17 +31,37 @@ def respond_to_chat(message, chat_history):
     print(response)
     return response.text
 
-# Set up Gradio chat interface
-iface = gr.ChatInterface(
-    respond_to_chat,
-    title="LLM Job Helper",
-    description="Chat with the agent to find your next great opportunity!",
-    examples=[
-        # ["Find a flight from Dallas to San Francisco on October 15, 2023"],
-        # ["Book the second flight from the previous search"]
-    ]
-)
+print(gr.__version__)
+# Set up Gradio chat interface with an additional File input component
+with gr.Blocks() as demo:
+    gr.Markdown("# LLM Job Helper")
+    with gr.Row(height=200):
+        with gr.Accordion("Upload Resume"):
+            file_input = gr.File(label="Upload your resume", height=200)
+            file_output = gr.Textbox(label="File upload status")
+
+            def handle_file_upload(file):
+                return load_resume(file)
+
+            file_input.upload(handle_file_upload, file_input, file_output)
+        
+    with gr.Row():
+        # Chat interface
+        chat_box = gr.ChatInterface(
+            respond_to_chat,
+            title="Chat with the agent",
+            description="Find your next great opportunity!",
+        )
+
+    # File upload interface
+    
+    
+    # Launch the combined interface
+    # chat_box.render()
+    # file_input.render()
+    # file_output.render()
+    # demo.render()
 
 # Launch the Gradio app
 if __name__ == "__main__":
-    iface.launch()
+    demo.launch()
