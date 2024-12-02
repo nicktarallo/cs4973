@@ -2,10 +2,10 @@ import chromadb
 from datasets import Dataset
 
 listings = Dataset.from_json(
-    'job_listings.jsonl'
+    'project/job_listings.jsonl'
 )
 resumes = Dataset.from_json(
-    'resumes.jsonl'
+    'project/resumes.jsonl'
 )
 
 documents = []
@@ -22,9 +22,10 @@ for listing in listings:
 
 # Create a ChromaDB client
 chroma_client = chromadb.PersistentClient(path="project/client")
+chroma_client.delete_collection(name="job_listing_collection") 
 
 # Create a collection
-collection = chroma_client.create_collection(name="job_listing_collection")
+collection = chroma_client.create_collection(name="job_listing_collection", metadata={"hnsw:batch_size":10000})
 
 # Add documents to the collection
 collection.add(
@@ -41,4 +42,5 @@ results = collection.query(
 for i, doc_id in enumerate(results['ids'][0]):
     doc_text = results['documents'][0][i]
     distance = results['distances'][0][i]
-    print(f"ID: {doc_id}, Distance: {distance}")
+    metadata = results['metadatas'][0][i]
+    print(f"ID: {doc_id}, Distance: {distance}, Metadata: {metadata}")
