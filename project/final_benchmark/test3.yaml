@@ -1,0 +1,7 @@
+# This is another example of a simple/trivial prompt that is asking general questions about the job market that the agent should be able to answer without additional context/tools.
+
+- prompt: "What skills do I need to transition from a data analyst role to a data scientist role?"
+  expected_type: text
+
+- prompt: Thanks!
+  expected_type: text

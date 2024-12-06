@@ -1,0 +1,26 @@
+# This test is mainly meant to test whether the user can call tools without actually every calling the find jobs tool. There is no reason that this should not work,
+# so we expect these tests to pass.
+
+# However, it at times misinterprets the initial prompt and responds with text instead of pure code, resulting in a failing benchmark.
+
+- prompt: I was talking to you earlier, I was interested in job 56, but I can't remember what the description looked like.
+  expected_type: show-job-description
+  expected_result: 56
+
+- prompt: What skills should I work on to get that job?
+  expected_type: skills-gap
+  expected_result: 56
+
+- prompt: Ok, looks like I still have a bit to work on. Why don't you write me a cover letter anyways?
+  expected_type: cover-letter
+  expected_result: 56
+
+- prompt: Just apply for me, that would be really helpful
+  expected_type: apply
+  expected_result: 56
+  cover_letter: true
+
+- prompt: Apply again so I have a better chance
+  expected_type: apply
+  expected_result: null
+  cover_letter: false

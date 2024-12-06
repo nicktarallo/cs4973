@@ -1,0 +1,91 @@
+# This trivial prompt is from our initial benchmark set. It tests to see whether the chatbot will successfully answer questions when tools are not necessary since
+# the resume/job description are provided in the prompts.
+
+# Interestingly, our benchmark sometimes fail on this prompt that should be somewhat trivial since it tries to write code to solve it even though it is not necessary. This is
+# likely because our system prompt and few-shot prompting is biased towards code. We tried to improve this by adding a few shot-user-assistant interaction where no code was created.
+# The code it tried to create was ```def work_on_cpp_projects(self):```
+# Additionally, after encountering this, we added an ErrorResponse as another subclass of AgentResponse. Previously, in the case of error, we were just catching and returning the code as
+# a TextResponse, but we decided that this was not desired behavior.
+
+# At other times, it tries to use the find_jobs tool even though its not necessary
+
+- prompt: |
+    John Doe
+    Email: john.doe@example.com Phone: (555) 123-4567 LinkedIn: linkedin.com/in/johndoeGitHub: github.com/johndoe
+
+    Professional Summary
+    Innovative software engineer with 5+ years of experience in full stack development, specializing in designing and deploying scalable web applications.
+
+    Skills
+    Languages: JavaScript, Python, Java
+    Frameworks: React, Node.js, Django
+    Databases: MySQL, MongoDB
+    Tools: Git, Docker
+    Cloud: AWS, Azure
+
+    Experience
+    Senior Software Engineer Tech Solutions Inc. | Boston, MA Jan 2022 - Present
+    - Developed e-commerce platform with React and Node.js, boosting user engagement by 30%.
+    - Implemented CI/CD with Jenkins, cutting deployment time by 40%.
+
+    Software Engineer Innovative Apps LLC | Boston, MA Jun 2018 - Dec 2021
+    - Maintained RESTful APIs using Django, improving system efficiency by 25%.
+    - Collaborated with cross-functional teams on software solutions.
+
+    Education
+    B.S. in Computer Science Northeastern University | Boston, MA Graduated: May 2018
+
+    Certifications
+    - AWS Certified Solutions Architect
+    - Certified Kubernetes Administrator (CKA)
+
+    Projects
+    Smart Home Automation System
+    - Developed IoT-based home automation with Python and AWS IoT Core.
+
+    Personal Portfolio Website
+    - Designed a portfolio site using HTML, CSS, and JavaScript.
+
+    This is my resume. What do you think are some of my best skills?
+  expected_type: text
+
+- prompt: |
+    Job Title: Software Engineer
+    Location: Boston, MA Type: Full-Time
+
+    About Us
+    Tech Innovators Inc. is a forward-thinking company dedicated to revolutionizing the tech industry with cutting-edge solutions. We value creativity, collaboration, and continuous improvement.
+
+    Job Description
+    We are seeking a passionate and talented Software Engineer to join our dynamic team. In this role, you will design, develop, and maintain software applications, collaborating with cross-functional teams to deliver high-quality solutions.
+
+    Key Responsibilities
+    - Develop and maintain scalable web applications using modern technologies.
+    - Collaborate with designers, product managers, and other engineers to implement new features.
+    - Write clean, maintainable, and efficient code.
+    - Participate in code reviews and contribute to team knowledge-sharing sessions.
+    - Troubleshoot, debug, and optimize application performance.
+    - Stay updated with the latest industry trends and technologies.
+
+    Qualifications
+    - Bachelor’s degree in Computer Science or related field.
+    - 2+ years of experience in software development.
+    - Proficiency in C++.
+    - Experience with additional languages such as JavaScript, Python, or Java is a plus.
+    - Strong problem-solving skills and attention to detail.
+    - Excellent communication and teamwork abilities.
+
+    Benefits
+    - Competitive salary and performance-based bonuses.
+    - Comprehensive health, dental, and vision insurance.
+    - 401(k) with company match.
+    - Flexible working hours and remote work options.
+    - Opportunities for professional development and growth.
+
+    To Apply: Send your resume and cover letter to careers@techinnovators.com
+
+    Do I fit the requirements for this job? Am I missing any required qualifications/skills?
+  expected_type: text
+
+- prompt: How can I get the necessary experience for this job?
+  expected_type: text

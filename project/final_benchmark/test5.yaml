@@ -1,0 +1,23 @@
+# This is another simple benchmark that is potentially easier than test4, as it does not require any previous context. It also sees if the model will call the skills gap analysis
+# tool properly.
+
+# Sometimes, it fails to use the skills gap tool properly on the 3rd prompt. The model seems to struggle with identifying tools when the language is not very similar to what is used
+# in the few shot prompts.
+
+- prompt: Find me jobs please
+  expected_type: find-jobs
+  expected_result: [80, 77, 0, 20, 60]
+
+- prompt: Show me the description for the second?
+  expected_type: show-job-description
+  expected_result: 77
+
+- prompt: Do I have the skills for the job?
+  expected_type: skills-gap
+  expected_result: 77
+
+- prompt: Ok, well I guess I might as well apply then please.
+  expected_type: apply
+  expected_result: 77
+  cover_letter: false
+

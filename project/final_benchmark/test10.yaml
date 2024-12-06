@@ -1,0 +1,18 @@
+# This is intended to test the ability of the model to do multiple calls in one turn successfully. In particular, the third prompt will confirm that both steps worked properly by
+# detecting whether the application was successful while also seeing whether the cover letter was also included with the application as intended.
+
+- prompt: Find me jobs based on my resume
+  expected_type: find-jobs
+  expected_result: [80, 77, 0, 20, 60]
+
+- prompt: Show me the description of the third.
+  expected_type: show-job-description
+  expected_result: 0
+
+- prompt: Write me a cover letter and apply for the job
+  expected_type: apply
+  expected_result: 0
+  cover_letter: true
+
+- prompt: Wish me luck!
+  expected_type: text

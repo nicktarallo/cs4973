@@ -1,0 +1,40 @@
+# This is intended to test the ability of the model to recall details from earlier in the conversation when the user
+# asks about the Google job much later. It also tests the ability of the model to answer one-off questions about the job description
+# such as the third prompt.
+
+# Sometimes, it fails and we encounter this error AttributeError("'ShowJobDescriptionResponse' object has no attribute 'company'")
+# The model tries to access a company attribute that doesn't exist. It is supposed to just refer to previous context since the company is available there.
+
+- prompt: Find me jobs based on my resume
+  expected_type: find-jobs
+  expected_result: [80, 77, 0, 20, 60]
+
+- prompt: Can you show me a description of the second one. I don't really know about the details of the job
+  expected_type: show-job-description
+  expected_result: 77
+
+- prompt: Interesting, what company is it for?
+  expected_type: text
+
+- prompt: What skills would I be missing for the job
+  expected_type: skills-gap
+  expected_result: 77
+  cover_letter: true
+
+- prompt: Interesting, write me a cover letter
+  expected_type: cover-letter
+  expected_result: 77
+
+- prompt: Now apply for it
+  expected_type: apply
+  expected_result: 77
+  cover_letter: true
+
+- prompt: Can you also show me details about the AWS job?
+  expected_type: show-job-description
+  expected_result: 80
+
+- prompt: Cool, apply for it
+  expected_type: apply
+  expected_result: 80
+  cover_letter: false

@@ -1,0 +1,26 @@
+# This is an example where we are testing very difficult prompts like applying to up to 3 jobs at once, and also doing a cover letter and application in one turn.
+# It often fails on the second prompt, as it is difficult for the model to synthesize the correct code to apply for three jobs.
+
+- prompt: Hey! You have my resume, why don't you find me some useful jobs based on it.
+  expected_type: find-jobs
+  expected_result: [80, 77, 0, 20, 60]
+
+- prompt: Thanks a lot. Can you apply to the first three?
+  expected_type: apply
+  expected_result: 0
+  cover_letter: false
+
+- prompt: Show me the description for the last one as well
+  expected_type: show-job-description
+  expected_result: 60
+
+- prompt: Write me a cover letter and then apply to that one as well
+  expected_type: apply
+  expected_result: 60
+  cover_letter: true
+
+- prompt: I hope i get one of the jobs
+  execteed_type: text
+
+- prompt: Thank you!
+  expected_type: text

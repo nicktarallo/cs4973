@@ -22,8 +22,12 @@ agent = Agent(client, collection)
 def load_resume(file):
     with open(file.name, 'r') as f:
         resume_content = f.read()
-    print(f"Loaded resume content: {resume_content}")
+    agent.set_resume(resume_content)
     return "Resume uploaded successfully!"
+
+def clear_resume():
+    agent.set_resume(None)
+    return "Resume deleted."
 
 # Function to maintain and get response from the agent
 def respond_to_chat(message, chat_history):
@@ -33,25 +37,28 @@ def respond_to_chat(message, chat_history):
 
 print(gr.__version__)
 # Set up Gradio chat interface with an additional File input component
-with gr.Blocks() as demo:
+with gr.Blocks(fill_height=True) as demo:
     gr.Markdown("# LLM Job Helper")
-    with gr.Row(height=200):
-        with gr.Accordion("Upload Resume"):
-            file_input = gr.File(label="Upload your resume", height=200)
-            file_output = gr.Textbox(label="File upload status")
-
-            def handle_file_upload(file):
-                return load_resume(file)
-
-            file_input.upload(handle_file_upload, file_input, file_output)
-        
     with gr.Row():
-        # Chat interface
-        chat_box = gr.ChatInterface(
-            respond_to_chat,
-            title="Chat with the agent",
-            description="Find your next great opportunity!",
-        )
+        with gr.Column():
+            file_input = gr.File(label="Upload your resume")
+        with gr.Column():
+            file_output = gr.Textbox(label="File upload status"), # height=100)
+            
+
+
+    chat_box = gr.ChatInterface(
+        respond_to_chat,
+        # title="Chat with the agent",
+        description="Find your next great opportunity!",
+    )
+
+    def handle_file_upload(file): 
+        return load_resume(file) 
+    def handle_file_clear(file): 
+        return clear_resume() 
+    file_input.upload(handle_file_upload, file_input, file_output) 
+    file_input.clear(handle_file_clear, file_input, file_output)
 
     # File upload interface
     

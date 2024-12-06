@@ -1,0 +1,26 @@
+# This example tests that all tools that require a resume will not work without having a resume uploaded, and will instead return None
+# the only tool that should be successful is showing a job description.
+
+- prompt: Hi! Can you find me jobs based on my resume?
+  expected_type: find-jobs
+  expected_result: null
+
+- prompt: Apply to job 54
+  expected_type: apply
+  expected_result: null
+  cover_letter: false
+
+- prompt: Write me a cover letter for job 70
+  expected_type: cover-letter
+  expected_result: null
+
+- prompt: Do a skills gap analysis for job 12
+  expected_type: skills-gap
+  expected_result: null
+
+- prompt: Show me the description for job 0
+  expected_type: show-job-description
+  expected_result: 0
+
+- prompt: Oh darn, you don't have my resume. at the very least, can you tell me about some skills that are important in the software engineering industry?
+  expected_type: text

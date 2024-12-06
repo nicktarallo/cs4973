@@ -1,0 +1,105 @@
+# This is another trivial set of prompts adapted from the initial benchmark that the model should be able to answer without tool calls.
+# However, it often tries to use tools like the find jobs tool so it fails on the first prompt. The model has trouble answering questions without tools
+# when they won't be needed or beneficial.
+
+- prompt: |
+    Here is my first job description:
+    Location: Boston, MA Type: Full-Time
+
+    About Us
+    Data Insights Corp. is a leading data analytics firm specializing in transforming data into actionable insights. We focus on data-driven solutions to help our clients achieve their business goals.
+
+    Job Description
+    We are looking for an analytical and detail-oriented Data Analyst to join our team. The ideal candidate will have strong analytical skills and experience in data analysis and visualization.
+
+    Key Responsibilities
+    - Collect, clean, and analyze data from various sources.
+    - Develop and maintain dashboards and reports using data visualization tools.
+    - Conduct data analysis to identify trends and insights.
+    - Collaborate with cross-functional teams to understand business needs and provide data-driven recommendations.
+    - Ensure data accuracy and integrity.
+
+    Qualifications
+    - Bachelor’s degree in Statistics, Mathematics, Computer Science, or a related field.
+    - 3+ years of experience in data analysis.
+    - Proficiency in SQL, Excel, and data visualization tools (e.g., Tableau, Power BI).
+    - Strong analytical and problem-solving skills.
+    - Excellent communication and presentation skills.
+
+    Here is my second job description:
+    Location: Boston, MA Type: Full-Time
+
+    About Us
+    Creative Designs Inc. is a renowned design agency known for innovative and visually stunning designs. We work with a diverse range of clients to create compelling visual content.
+
+    Job Description
+    We are seeking a talented and creative Graphic Designer to join our team. The ideal candidate will have a strong portfolio showcasing their design skills and experience in graphic design.
+
+    Key Responsibilities
+    - Create visually appealing designs for digital and print media.
+    - Collaborate with clients and team members to understand design requirements.
+    - Develop and maintain brand guidelines and design standards.
+    - Use design software to create graphics, illustrations, and layouts.
+    - Stay updated with design trends and tools.
+
+    Qualifications
+    Bachelor’s degree in Graphic Design, Fine Arts, or a related field.
+    - 2+ years of experience in graphic design.
+    - Proficiency in Adobe Creative Suite (Photoshop, Illustrator, InDesign).
+    - Strong portfolio showcasing design skills and creativity.
+    - Excellent communication and teamwork skills.
+
+
+    Which job would be a better fit based on my resume?
+
+    Jane Doe
+    Email: jane.doe@example.com Phone: (555) 876-5432 LinkedIn: linkedin.com/in/janedoe
+
+    Professional Summary
+    Detail-oriented Data Analyst with over 3 years of experience in data analysis and visualization. Proficient in SQL, Excel, and Tableau. Skilled in identifying trends and providing data-driven recommendations.
+
+    Skills
+    - Data Analysis
+    - SQL
+    - Excel
+    - Tableau
+    - Data Visualization
+    - Data Cleaning
+    - Problem-Solving
+    - Communication
+
+    Professional Experience
+    Data Analyst Data Solutions Inc. Boston, MA January 2021 - Present
+    - Collected, cleaned, and analyzed data from multiple sources.
+    - Developed and maintained interactive dashboards using Tableau.
+    - Conducted data analysis to identify trends and insights.
+    - Collaborated with cross-functional teams to provide data-driven recommendations.
+    - Ensured data accuracy and integrity.
+
+    Junior Data Analyst Tech Analytics LLC Boston, MA June 2018 - December 2020
+    - Assisted in data collection, cleaning, and analysis.
+    - Created reports and visualizations using Excel and Tableau.
+    - Conducted preliminary data analysis to support senior analysts.
+    - Maintained data accuracy and documentation.
+
+    Education
+    Bachelor of Science in Mathematics University of Boston Boston, MA Graduated: May 2018
+
+    Certifications
+    - Tableau Desktop Specialist
+    - SQL for Data Science (Coursera)
+
+    Projects
+    Sales Data Analysis Project
+    - Analyzed sales data to identify key trends and insights, resulting in a 15% increase in sales performance.
+
+    Customer Segmentation Analysis
+    - Conducted a customer segmentation analysis to improve marketing strategies and target key customer segments more effectively.
+
+    References
+    Available upon request.
+
+  expected_type: text
+
+- prompt: If I wanted to be able to take on the second job, what would I have to learn?
+  expected_type: text

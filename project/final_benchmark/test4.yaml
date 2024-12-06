@@ -1,0 +1,26 @@
+# This is an example of a fairly simple sequence of prompts that should result in tool calls. It also tests the inclusion of a cover letter after being written for a job, while not including
+# it with another job that was asked to apply to.
+# Additionally, it makes sure that the user cannot apply to the same job twice, while also testing some recall from previous turns.
+
+- prompt: Find me jobs based on my resume
+  expected_type: find-jobs
+  expected_result: [80, 77, 0, 20, 60]
+
+- prompt: Write a cover letter for the 4th one
+  expected_type: cover-letter
+  expected_result: 20
+
+- prompt: Now apply to it for me
+  expected_type: apply
+  expected_result: 20
+  cover_letter: true
+
+- prompt: Can you apply to it again?
+  expected_type: apply
+  expected_result: null
+  cover_letter: false
+
+- prompt: Oh darn, I was hoping to apply twice. Well, at the very least, can you also apply to the first job that came up?
+  expected_type: apply
+  expected_result: 80
+  cover_letter: false

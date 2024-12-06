@@ -1,0 +1,25 @@
+# This is intended to test the ability of the model to interpret less "correct" language and slang
+# It sometimes fails on the second prompt, where t can't seem to figure out the right tool call at times
+
+- prompt: whats up homie
+  expected_type: text
+
+- prompt: i lowkey need some cash, what kinda jobs are out there that might be good for me
+  expected_type: find-jobs
+  expected_result: [80, 77, 0, 20, 60]
+
+- prompt: hmmm, the first one looks a bit interesting, just throw in an app
+  expected_type: apply
+  expected_result: 80
+
+- prompt: i wanna know more about the last one
+  expected_type: show-job-description
+  expected_result: 60
+
+- prompt: darn, they want a cover letter??? I dont wanna write it man - make yourself useful and do it
+  expected_type: cover-letter
+  expected_result: 60
+
+- prompt: throw that app in as well
+  expected_type: application
+  expected_result: 60

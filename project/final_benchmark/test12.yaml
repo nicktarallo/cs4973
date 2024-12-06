@@ -1,0 +1,7 @@
+# This single prompt is intended to test the ability of the model to properly use the find jobs tool when the prompt is very short and does not specify that it wants the
+# model to use their resume to detect the jobs. During manual testing, this sometimes did not work, and the model would instead provdie a text response without this specification,
+# which is what makes this specific benchmark more challenging than it looks, resulting in failure at times.
+
+- prompt: find me jobs please
+  expected_type: find-jobs
+  expected_result: [80, 77, 0, 20, 60]
