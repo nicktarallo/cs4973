@@ -10,10 +10,12 @@ API_KEY = "tarallo.n@northeastern.edu:OQEgetkQ6LBofgWW4jsC"
 client = OpenAI(base_url=BASE_URL, api_key=API_KEY)
 
 # Create a ChromaDB client
-chroma_client = chromadb.PersistentClient(path="kaggles_client")
+chroma_client = chromadb.PersistentClient(path=r"project/kaggles_client")
 
 # Access the existing collection by name
 collection = chroma_client.get_collection(name="linkedin")
+
+print(collection.count())
 
 # Initialize the agent from your script
 agent = Agent(client, collection)

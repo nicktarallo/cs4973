@@ -15,6 +15,8 @@ chroma_client = chromadb.PersistentClient(path="project/client")
 # Access the existing collection by name
 collection = chroma_client.get_collection(name="job_listing_collection")
 
+print(collection.count)
+
 # Initialize the agent from your script
 agent = Agent(client, collection)
 
@@ -41,12 +43,10 @@ with gr.Blocks(fill_height=True) as demo:
     gr.Markdown("# LLM Job Helper")
     with gr.Row():
         with gr.Column():
-            file_input = gr.File(label="Upload your resume")
+            file_input = gr.File(label="Upload your resume", file_types=['text'])
         with gr.Column():
             file_output = gr.Textbox(label="File upload status"), # height=100)
             
-
-
     chat_box = gr.ChatInterface(
         respond_to_chat,
         # title="Chat with the agent",
