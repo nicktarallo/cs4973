@@ -35,6 +35,9 @@ for index, listing in df.iterrows():
 
 # Create a ChromaDB client
 chroma_client = chromadb.PersistentClient(path="project/client")
+chroma_client.delete_collection(name="job_listing_collection_5000_real_jobs")
+
+chroma_client = chromadb.PersistentClient(path="project/real_jobs_client")
 
 # Create a collection
 collection = chroma_client.create_collection(name="job_listing_collection_5000_real_jobs", metadata={"hnsw:batch_size":10000})

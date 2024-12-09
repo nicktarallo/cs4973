@@ -10,7 +10,7 @@ API_KEY = "tarallo.n@northeastern.edu:OQEgetkQ6LBofgWW4jsC"
 client = OpenAI(base_url=BASE_URL, api_key=API_KEY)
 
 # Create a ChromaDB client
-chroma_client = chromadb.PersistentClient(path="project/client")
+chroma_client = chromadb.PersistentClient(path="project/real_jobs_client")
 
 # Access the existing collection by name
 collection = chroma_client.get_collection(name="job_listing_collection_5000_real_jobs")
